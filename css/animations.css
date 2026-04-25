@@ -1,0 +1,183 @@
+/* ========== 动画定义 ========== */
+
+/* 淡入向上动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 缩放动画 */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 脉冲动画 */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* 浮动动画 */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* 波浪动画 */
+@keyframes wave {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-5px); }
+}
+
+/* 旋转动画 */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* 进度条动画 */
+@keyframes progressFill {
+    from { width: 0; }
+    to { width: var(--target-width); }
+}
+
+/* 闪烁动画 */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* ========== 应用动画类 ========== */
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.5s ease forwards;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease infinite;
+}
+
+.animate-float {
+    animation: float 3s ease infinite;
+}
+
+.animate-wave {
+    animation: wave 3s ease infinite;
+}
+
+/* 滚动触发动画 */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-animate.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 延迟动画 */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+.delay-5 { animation-delay: 1s; }
+
+/* 数字滚动动画 */
+.stat-number {
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.stat-number.counting {
+    animation: pulse 1s ease;
+}
+
+/* 悬停动画 */
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* 加载动画 */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--gray-200);
+    border-top-color: var(--secondary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* 进度条动画 */
+.progress-fill {
+    animation: progressFill 1.5s ease forwards;
+}
+
+/* 循环图节点动画 */
+.cycle-node {
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+.cycle-node:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.cycle-node.active {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 10px rgba(44,95,126,0.5));
+}
+
+/* 连接线动画 */
+.cycle-svg line,
+.cycle-svg path,
+.cycle-svg circle {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 2s ease forwards;
+}
+
+@keyframes dash {
+    to { stroke-dashoffset: 0; }
+}

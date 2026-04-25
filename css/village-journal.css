@@ -1,0 +1,2373 @@
+/* ══════════════════════════════════════════════════════════════
+   渔村手记 × 潮间带  —  创新设计系统覆盖样式
+   Village Journal × Tidal Zone Design System Override
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 全局纸质感背景 ── */
+body {
+    background-color: #F5F0E8 !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E") !important;
+    background-attachment: fixed !important;
+    animation: none !important;
+    color: #1C1A16 !important;
+}
+
+/* 隐藏粒子画布 */
+#particleCanvas { display: none !important; }
+
+/* ── 左侧竖排书签式导航栏 ── */
+.navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 90px !important;
+    height: 100vh !important;
+    background: #1C1A16 !important;
+    border-right: none !important;
+    box-shadow: 4px 0 20px rgba(28,26,22,0.18) !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 !important;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1) !important;
+    overflow: hidden !important;
+    backdrop-filter: none !important;
+    animation: none !important;
+}
+
+.navbar::before,
+.navbar::after {
+    display: none !important;
+}
+
+.navbar:hover {
+    width: 220px !important;
+}
+
+/* Logo区域 */
+.logo {
+    width: 100% !important;
+    padding: 28px 0 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    border-bottom: 1px solid rgba(201,169,110,0.2) !important;
+    cursor: default !important;
+    flex-shrink: 0 !important;
+    background: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+}
+
+.logo i {
+    font-size: 1.6rem !important;
+    color: #C9A96E !important;
+    flex-shrink: 0 !important;
+    text-shadow: none !important;
+    animation: none !important;
+}
+
+.logo span {
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+    font-family: 'Noto Serif SC', serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    color: #C9A96E !important;
+    letter-spacing: 4px !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    opacity: 1 !important;
+    background: none !important;
+    -webkit-text-fill-color: #C9A96E !important;
+    text-shadow: none !important;
+}
+
+/* 导航菜单 */
+.nav-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    list-style: none !important;
+    gap: 0 !important;
+    width: 100% !important;
+    flex: 1 !important;
+    padding: 16px 0 !important;
+}
+
+.nav-menu li {
+    width: 100% !important;
+}
+
+/* 导航链接 */
+.nav-link {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 18px 0 !important;
+    text-decoration: none !important;
+    color: #C9A96E !important;
+    -webkit-text-fill-color: #C9A96E !important;
+    font-family: 'Noto Serif SC', serif !important;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 2px !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    border: none !important;
+    background: none !important;
+    border-radius: 0 !important;
+    animation: none !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+    opacity: 0.7 !important;
+}
+
+.nav-link::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) scaleY(0) !important;
+    width: 3px !important;
+    height: 60% !important;
+    background: #C9A96E !important;
+    border-radius: 0 2px 2px 0 !important;
+    transition: transform 0.3s ease !important;
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    transform: translateY(-50%) scaleY(1) !important;
+}
+
+.nav-link:hover {
+    color: #E8C87A !important;
+    -webkit-text-fill-color: #E8C87A !important;
+    background: rgba(201,169,110,0.08) !important;
+    opacity: 1 !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    text-shadow: none !important;
+}
+
+.nav-link.active {
+    color: #E8C87A !important;
+    -webkit-text-fill-color: #E8C87A !important;
+    background: rgba(201,169,110,0.12) !important;
+    opacity: 1 !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+/* 展开后显示横排文字 */
+.navbar:hover .nav-link {
+    flex-direction: row !important;
+    padding: 18px 24px !important;
+    gap: 12px !important;
+    writing-mode: horizontal-tb !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 1px !important;
+}
+
+/* 深度指示器重新设计 */
+.depth-indicator {
+    position: absolute !important;
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 1px !important;
+    height: 60px !important;
+    background: linear-gradient(to bottom, #C9A96E, transparent) !important;
+    opacity: 0.4 !important;
+    animation: none !important;
+}
+
+/* ── 主体内容左移 ── */
+body > section,
+body > .experience-section,
+body > .heritage-section,
+body > .history-section,
+body > .structure-section,
+body > .photo-gallery,
+body > .video-showcase,
+body > .analysis-section {
+    margin-left: 90px !important;
+}
+
+.hero {
+    margin-left: 0 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Hero 概览区域 —— 手绘线稿 + 纸质感分栏布局
+   ══════════════════════════════════════════════════════════════ */
+
+.hero {
+    background: #F5F0E8 !important;
+    animation: none !important;
+    height: 100vh !important;
+    min-height: 700px !important;
+    display: flex !important;
+    align-items: stretch !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+/* 隐藏旧的图片背景 */
+.hero-bg { display: none !important; }
+
+/* ══════════════════════════════════════
+   ① 底层：潮汐光影 CSS渐变漂移
+   ══════════════════════════════════════ */
+.hero-tidal-light {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 600px 400px at 20% 30%, rgba(232,213,168,0.28) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 300px at 80% 70%, rgba(201,169,110,0.15) 0%, transparent 65%),
+        radial-gradient(ellipse 300px 200px at 55% 20%, rgba(255,248,235,0.22) 0%, transparent 60%);
+    animation: tidalDrift 22s ease-in-out infinite;
+}
+
+@keyframes tidalDrift {
+    0%   { background-position: 0% 0%;   opacity: 0.85; }
+    25%  { background-position: 30% 20%; opacity: 1;    }
+    50%  { background-position: 60% 50%; opacity: 0.9;  }
+    75%  { background-position: 20% 80%; opacity: 1;    }
+    100% { background-position: 0% 0%;   opacity: 0.85; }
+}
+
+/* ══════════════════════════════════════
+   ② 中层：海草摇曳 SVG动态
+   ══════════════════════════════════════ */
+.hero-seaweed-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.hero-seaweed-svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 3px rgba(107,140,90,0.35));
+}
+
+.sw  { transform-origin: center bottom; }
+
+.sw1  { animation: sway1 7s   ease-in-out infinite 0s;   }
+.sw2  { animation: sway2 8.5s ease-in-out infinite 0.4s; }
+.sw3  { animation: sway1 6.5s ease-in-out infinite 1.1s; }
+.sw4  { animation: sway2 9s   ease-in-out infinite 0.7s; }
+.sw5  { animation: sway1 7.5s ease-in-out infinite 1.8s; }
+.sw6  { animation: sway2 8s   ease-in-out infinite 0.2s; }
+.sw7  { animation: sway1 7s   ease-in-out infinite 2.1s; }
+.sw8  { animation: sway2 9.5s ease-in-out infinite 0.9s; }
+.sw9  { animation: sway1 6.8s ease-in-out infinite 1.5s; }
+.sw10 { animation: sway2 8.2s ease-in-out infinite 0.3s; }
+.sw11 { animation: sway1 7.3s ease-in-out infinite 2.4s; }
+.sw12 { animation: sway2 8.8s ease-in-out infinite 1.2s; }
+
+@keyframes sway1 {
+    0%,100% { transform: rotate(0deg)  skewX(0deg);    }
+    25%     { transform: rotate(-6deg) skewX(-2deg);   }
+    75%     { transform: rotate(6deg)  skewX(2deg);    }
+}
+@keyframes sway2 {
+    0%,100% { transform: rotate(0deg)  skewX(0deg);    }
+    30%     { transform: rotate(7deg)  skewX(2.5deg);  }
+    70%     { transform: rotate(-5deg) skewX(-2deg);   }
+}
+
+/* ══════════════════════════════════════
+   ③ 顶层：墨迹晕染 Canvas
+   ══════════════════════════════════════ */
+.hero-ink-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* 顶部页眉金线 */
+.hero-paper-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        #C9A96E 15%,
+        #E8D5A8 50%,
+        #C9A96E 85%,
+        transparent 100%);
+    z-index: 10;
+}
+
+/* SVG线稿装饰容器 */
+.hero-seaweed-deco {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.hero-house-sketch {
+    position: absolute;
+    left: 130px;
+    bottom: 0;
+    width: 55%;
+    max-width: 520px;
+    height: auto;
+    opacity: 1;
+}
+
+.hero-ink-dots {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+}
+
+/* 主内容区 */
+.hero-content {
+    position: relative !important;
+    z-index: 5 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 60px 0 130px !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    animation: none !important;
+}
+
+/* 页眉标签行 */
+.hero-header-line {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #DDD4C0;
+    width: 100%;
+    max-width: 820px;
+}
+
+.hero-header-tag {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.8rem;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+    letter-spacing: 3px;
+}
+
+.hero-header-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.8rem;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+    letter-spacing: 2px;
+    margin-left: auto;
+}
+
+/* 左右分栏 */
+.hero-split {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    width: 100%;
+    max-width: 820px;
+}
+
+/* 左栏 */
+.hero-left {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* 竖排大标题 */
+.hero-vertical-title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.hero-title-main {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 5.5rem;
+    font-weight: 900;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+    letter-spacing: 8px;
+    line-height: 1;
+    text-shadow: none;
+    -webkit-text-stroke: 0.3px rgba(28,26,22,0.2);
+    /* 三阶段动画：墨迹铺底 → 海草写字 → 时光刻蚀 */
+    animation:
+        titleInkBlur   0.5s ease-out          0s   forwards,
+        titleInkReveal 2.0s ease-out          0.5s forwards,
+        titleChisel    0.8s ease-out          2.5s forwards;
+    opacity: 0;
+    filter: blur(16px);
+}
+
+/* 阶段①：墨迹铺底，字形隐约出现 */
+@keyframes titleInkBlur {
+    0%   { opacity: 0;    filter: blur(16px); transform: scale(1.08); }
+    100% { opacity: 0.18; filter: blur(10px); transform: scale(1.04); }
+}
+
+/* 阶段②：海草写字，blur从模糊到清晰，分三段对应三个字 */
+@keyframes titleInkReveal {
+    0%   { opacity: 0.18; filter: blur(10px); transform: scale(1.04);
+           -webkit-text-stroke: 0.3px rgba(28,26,22,0.15); }
+    30%  { opacity: 0.55; filter: blur(5px);  transform: scale(1.02);
+           -webkit-text-stroke: 0.4px rgba(28,26,22,0.25); }
+    65%  { opacity: 0.82; filter: blur(2px);  transform: scale(1.01);
+           -webkit-text-stroke: 0.5px rgba(28,26,22,0.3); }
+    100% { opacity: 1;    filter: blur(0px);  transform: scale(1);
+           -webkit-text-stroke: 0.6px rgba(28,26,22,0.35); }
+}
+
+/* 阶段③：时光刻蚀，text-shadow加深，描边加粗 */
+@keyframes titleChisel {
+    0%   { text-shadow: 0 0 0 rgba(28,26,22,0);
+           -webkit-text-stroke: 0.6px rgba(28,26,22,0.35); }
+    40%  { text-shadow: 1px 1px 2px rgba(28,26,22,0.2),
+                        0 0 8px rgba(201,169,110,0.15);
+           -webkit-text-stroke: 0.7px rgba(28,26,22,0.4); }
+    100% { text-shadow: 2px 2px 6px rgba(28,26,22,0.25),
+                        0 0 15px rgba(201,169,110,0.2),
+                        -1px -1px 0 rgba(245,240,232,0.4);
+           -webkit-text-stroke: 0.8px rgba(28,26,22,0.4); }
+}
+
+.hero-title-divider {
+    writing-mode: vertical-rl;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.2rem;
+    color: #C9A96E;
+    padding: 4px 4px;
+    line-height: 1;
+    opacity: 0;
+    animation: inkFadeUp 0.8s ease-out 2.8s forwards;
+}
+
+.hero-title-sub-vert {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+    letter-spacing: 0.18em;
+    line-height: 1;
+    text-shadow: none !important;
+    opacity: 0;
+    /* 副标题：潮汐涌现，弹性推上来 */
+    animation: tidalPush 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 3.2s forwards;
+    max-height: calc(100vh - 200px);
+    overflow: hidden;
+    transform: translateY(60px);
+}
+
+@keyframes tidalPush {
+    0%   { opacity: 0;   transform: translateY(60px); }
+    60%  { opacity: 0.9; transform: translateY(-6px); }
+    80%  { opacity: 1;   transform: translateY(3px);  }
+    100% { opacity: 1;   transform: translateY(0);    }
+}
+
+/* 墨色竖线 */
+.hero-ink-line {
+    width: 2px;
+    height: 0;
+    background: linear-gradient(to bottom, #1C1A16, #C9A96E, transparent);
+    margin: 0;
+    animation: inkLineGrow 1s ease-out 0.8s forwards;
+    align-self: flex-start;
+}
+
+@keyframes inkLineGrow {
+    0%   { height: 0; opacity: 0; }
+    100% { height: 80px; opacity: 1; }
+}
+
+@keyframes inkBloom {
+    0%   { clip-path: circle(0% at 50% 50%); opacity: 0; }
+    60%  { clip-path: circle(60% at 50% 50%); opacity: 1; }
+    100% { clip-path: circle(150% at 50% 50%); opacity: 1; }
+}
+
+@keyframes inkFadeUp {
+    0%   { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 副标题 */
+.hero-subtitle {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 1rem !important;
+    color: #2C2820 !important;
+    line-height: 1.9 !important;
+    letter-spacing: 1px !important;
+    text-shadow: none !important;
+    animation: inkFadeUp 1s ease-out 1s forwards !important;
+    opacity: 0 !important;
+    margin: 0 !important;
+    max-width: 320px;
+}
+
+.hero-subtitle-small {
+    font-size: 0.85rem;
+    color: #5A5248;
+    letter-spacing: 0.5px;
+}
+
+/* AI欢迎语 */
+.ai-welcome {
+    font-size: 0.82rem !important;
+    color: #3A3530 !important;
+    background: rgba(201,169,110,0.12) !important;
+    border: 1px solid #C9A96E !important;
+    border-radius: 2px !important;
+    padding: 10px 16px !important;
+    letter-spacing: 0.5px !important;
+    text-shadow: none !important;
+    animation: inkFadeUp 1s ease-out 1.2s forwards !important;
+    opacity: 0 !important;
+    display: inline-block !important;
+    max-width: 340px;
+}
+
+/* 右栏 */
+.hero-right {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding-top: 0;
+    position: relative;
+    z-index: 5;
+    opacity: 0;
+    animation: inkFadeUp 1s ease-out 0.5s forwards;
+    /* 隔离右栏布局变化，防止影响左侧标题 */
+    contain: layout;
+    width: 480px;
+    flex-shrink: 0;
+}
+
+/* 统计数据网格 */
+.hero-stats {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+    animation: none !important;
+    opacity: 1 !important;
+    margin: 0 !important;
+    max-width: 480px;
+    /* 固定整体尺寸，防止内容变化引起布局偏移 */
+    width: 480px;
+    flex-shrink: 0 !important;
+}
+
+.stat-item {
+    background: rgba(255,255,255,0.7) !important;
+    border: 1px solid #DDD4C0 !important;
+    border-left: 3px solid #6B8C5A !important;
+    border-radius: 2px !important;
+    padding: 20px 22px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    box-shadow: 0 2px 8px rgba(28,26,22,0.06) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+    animation: none !important;
+    backdrop-filter: none !important;
+    min-height: 110px !important;
+    overflow: visible !important;
+    contain: layout !important;
+}
+
+.stat-item:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 6px 16px rgba(28,26,22,0.1) !important;
+    border-left-color: #C9A96E !important;
+}
+
+.stat-number {
+    font-family: 'Noto Serif SC', serif !important;
+    font-size: 2.2rem !important;
+    font-weight: 900 !important;
+    color: #1C1A16 !important;
+    line-height: 1 !important;
+    text-shadow: none !important;
+    animation: none !important;
+    /* 固定宽度防止数字变化时引起布局抖动 */
+    display: block !important;
+    min-width: 100% !important;
+    text-align: left !important;
+    font-variant-numeric: tabular-nums !important;
+}
+
+.stat-label {
+    font-size: 0.82rem !important;
+    color: #3A3530 !important;
+    letter-spacing: 1px !important;
+    font-weight: 500 !important;
+    text-shadow: none !important;
+}
+
+/* 探索详情按钮 */
+.hero-cta {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 14px 32px !important;
+    background: #1C1A16 !important;
+    color: #F5F0E8 !important;
+    border: 1px solid #1C1A16 !important;
+    border-radius: 2px !important;
+    font-family: 'Noto Serif SC', serif !important;
+    font-size: 1rem !important;
+    letter-spacing: 2px !important;
+    text-decoration: none !important;
+    transition: all 0.35s ease !important;
+    box-shadow: 4px 4px 0 #C9A96E !important;
+    animation: none !important;
+    align-self: flex-start !important;
+}
+
+.hero-cta:hover {
+    background: #6B8C5A !important;
+    border-color: #6B8C5A !important;
+    box-shadow: 6px 6px 0 #C9A96E !important;
+    transform: translate(-2px, -2px) !important;
+    color: #FDFAF4 !important;
+}
+
+.hero-cta i {
+    font-size: 0.85rem;
+    transition: transform 0.3s ease;
+}
+
+.hero-cta:hover i {
+    transform: translateX(4px);
+}
+
+/* 滚动指示器 */
+.scroll-indicator {
+    color: #8C8278 !important;
+    text-shadow: none !important;
+}
+
+.scroll-indicator span {
+    color: #8C8278 !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 2px !important;
+}
+
+/* 响应式 */
+@media (max-width: 900px) {
+    .hero-content {
+        padding: 20px 24px !important;
+    }
+    .hero-split {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .hero-title-main {
+        font-size: 3.5rem;
+    }
+    .hero-title-sub-vert {
+        font-size: 2rem;
+    }
+    .hero-house-sketch {
+        width: 80%;
+        right: -40px;
+        opacity: 0.4;
+    }
+    .hero-stats {
+        grid-template-columns: 1fr 1fr !important;
+    }
+}
+
+/* ── 通用Section标题样式 ── */
+.section-title {
+    font-family: 'Noto Serif SC', serif !important;
+    color: #1C1A16 !important;
+    text-shadow: none !important;
+    position: relative !important;
+    padding-bottom: 20px !important;
+}
+
+.section-title::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 80px !important;
+    height: 2px !important;
+    background: #6B8C5A !important;
+    animation: brushStroke 0.8s ease-out forwards !important;
+}
+
+@keyframes brushStroke {
+    0%   { width: 0; opacity: 0; }
+    100% { width: 80px; opacity: 1; }
+}
+
+.section-subtitle {
+    color: #4A4540 !important;
+    text-shadow: none !important;
+}
+
+/* ── 卡片纸质感 ── */
+.card,
+.stat-card,
+.structure-card,
+.heritage-item,
+.experience-item,
+.timeline-content,
+.analysis-card,
+.chart-wrapper {
+    background: #FDFAF4 !important;
+    border: 1px solid #E8D5A8 !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 12px rgba(28,26,22,0.08) !important;
+    transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+    animation: none !important;
+    backdrop-filter: none !important;
+}
+
+.card::before,
+.card::after {
+    display: none !important;
+}
+
+.card:hover,
+.stat-card:hover,
+.structure-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 8px 20px rgba(28,26,22,0.12) !important;
+    border-color: #C9A96E !important;
+}
+
+/* ── 按钮纸质感 ── */
+.btn-primary {
+    background: #6B8C5A !important;
+    color: #FDFAF4 !important;
+    border: 1px solid #4A6340 !important;
+    box-shadow: 0 4px 12px rgba(107,140,90,0.3) !important;
+    animation: none !important;
+}
+
+.btn-primary:hover {
+    background: #4A6340 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 16px rgba(107,140,90,0.4) !important;
+}
+
+/* ── 加载动画纸质感 ── */
+.loader-wrapper {
+    background: #F5F0E8 !important;
+}
+
+.loader {
+    border-color: #EDE6D6 !important;
+    border-top-color: #6B8C5A !important;
+}
+
+/* ── 响应式：小屏幕变顶部横向 ── */
+@media (max-width: 900px) {
+    .navbar {
+        width: 100% !important;
+        height: 60px !important;
+        flex-direction: row !important;
+        padding: 0 20px !important;
+        top: 0 !important;
+        left: 0 !important;
+    }
+    .navbar:hover { width: 100% !important; }
+    .logo {
+        flex-direction: row !important;
+        padding: 0 !important;
+        border-bottom: none !important;
+    }
+    .logo span {
+        writing-mode: horizontal-tb !important;
+        font-size: 1rem !important;
+        letter-spacing: 2px !important;
+    }
+    .nav-menu {
+        flex-direction: row !important;
+        padding: 0 !important;
+        gap: 0 !important;
+        overflow-x: auto !important;
+    }
+    .nav-link {
+        flex-direction: row !important;
+        padding: 0 14px !important;
+        height: 60px !important;
+        writing-mode: horizontal-tb !important;
+        font-size: 0.8rem !important;
+    }
+    .navbar:hover .nav-link {
+        padding: 0 14px !important;
+    }
+    body > section,
+    body > .experience-section,
+    body > .heritage-section,
+    body > .history-section,
+    body > .structure-section,
+    body > .photo-gallery,
+    body > .video-showcase,
+    body > .analysis-section {
+        margin-left: 0 !important;
+        margin-top: 60px !important;
+    }
+    .hero {
+        margin-top: 60px !important;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Section 交替背景 + 波浪分隔
+   ══════════════════════════════════════════════════════════════ */
+
+/* 所有section基础 */
+section {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+/* 奇数section：麻纸白 */
+.hero,
+.structure-section,
+.video-showcase,
+.heritage-section {
+    background: #F5F0E8 !important;
+}
+
+/* 偶数section：稍深纸色 */
+.experience-section,
+.history-section,
+.photo-gallery,
+.analysis-section {
+    background: #EDE6D6 !important;
+}
+
+/* section之间的波浪SVG分隔线 */
+section::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='%23EDE6D6' fill-opacity='0.6' d='M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z'/%3E%3C/svg%3E");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.heritage-section::after,
+.video-showcase::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='%23F5F0E8' fill-opacity='0.6' d='M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z'/%3E%3C/svg%3E");
+}
+
+/* ══════════════════════════════════════════════════════════════
+   全局文字颜色修正（覆盖原来的白色文字）
+   ══════════════════════════════════════════════════════════════ */
+
+h1, h2, h3, h4, h5, h6 {
+    color: #1C1A16 !important;
+    text-shadow: none !important;
+}
+
+p, li, span, div {
+    color: inherit !important;
+    text-shadow: none !important;
+}
+
+/* section内的文字 */
+.experience-section h2,
+.experience-section h3,
+.experience-section h4,
+.experience-section p,
+.history-section h2,
+.history-section h3,
+.history-section h4,
+.history-section p,
+.structure-section h2,
+.structure-section h3,
+.structure-section h4,
+.structure-section p,
+.heritage-section h2,
+.heritage-section h3,
+.heritage-section h4,
+.heritage-section p,
+.analysis-section h2,
+.analysis-section h3,
+.analysis-section h4,
+.analysis-section p {
+    color: #1C1A16 !important;
+    text-shadow: none !important;
+}
+
+/* 副标题 */
+.section-subtitle {
+    color: #6A6058 !important;
+}
+
+/* ── 时间轴样式修正 ── */
+.timeline-year {
+    background: #FDFAF4 !important;
+    color: #6B8C5A !important;
+    border: 2px solid #C9A96E !important;
+    box-shadow: 0 4px 12px rgba(28,26,22,0.08) !important;
+}
+
+.timeline-content {
+    background: #FDFAF4 !important;
+    border: 1px solid #E8D5A8 !important;
+    box-shadow: 0 4px 12px rgba(28,26,22,0.08) !important;
+}
+
+.timeline-content::before {
+    background: linear-gradient(90deg, #6B8C5A, #C9A96E) !important;
+}
+
+.timeline-content h4 {
+    color: #4A6340 !important;
+    -webkit-text-fill-color: #4A6340 !important;
+    background: none !important;
+}
+
+.timeline-content p {
+    color: #4A4540 !important;
+}
+
+/* 时间轴中线 */
+.history-timeline::before {
+    background: linear-gradient(to bottom, #6B8C5A, #C9A96E, #6B8C5A) !important;
+    box-shadow: none !important;
+}
+
+/* ── 结构卡片修正 ── */
+.structure-card {
+    background: #FDFAF4 !important;
+    border-top: 4px solid #6B8C5A !important;
+}
+
+.structure-card::before {
+    background: linear-gradient(90deg, #6B8C5A, #C9A96E) !important;
+}
+
+.structure-card h4 {
+    color: #4A6340 !important;
+}
+
+.structure-card p {
+    color: #4A4540 !important;
+}
+
+.structure-icon {
+    background: linear-gradient(135deg, #6B8C5A, #C9A96E) !important;
+}
+
+/* ── 文化传承卡片修正 ── */
+.heritage-item {
+    background: #FDFAF4 !important;
+    border: 1px solid #E8D5A8 !important;
+}
+
+.heritage-item h3 {
+    color: #4A6340 !important;
+}
+
+.heritage-item p {
+    color: #4A4540 !important;
+}
+
+.heritage-icon {
+    background: linear-gradient(135deg, #6B8C5A, #C9A96E) !important;
+    color: #FDFAF4 !important;
+}
+
+/* ── 图表卡片修正 ── */
+.chart-wrapper,
+.analysis-card,
+.chart-card {
+    background: #FDFAF4 !important;
+    border: 1px solid #E8D5A8 !important;
+}
+
+.chart-title,
+.analysis-card h3 {
+    color: #4A6340 !important;
+}
+
+/* ── 统计卡片修正 ── */
+.stat-card {
+    background: #FDFAF4 !important;
+    color: #1C1A16 !important;
+    border: 1px solid #E8D5A8 !important;
+    box-shadow: 0 4px 12px rgba(28,26,22,0.08) !important;
+}
+
+.stat-card h3 {
+    color: #4A6340 !important;
+}
+
+.stat-card .stat-number {
+    color: #6B8C5A !important;
+}
+
+.stat-card .stat-desc,
+.stat-card .stat-label {
+    color: #6A6058 !important;
+}
+
+/* ── 村落卡片修正 ── */
+.village-card {
+    background: #FDFAF4 !important;
+    border: 1px solid #E8D5A8 !important;
+}
+
+.village-card h3 {
+    color: #4A6340 !important;
+}
+
+.village-card p {
+    color: #4A4540 !important;
+}
+
+/* ── 照片画廊修正 ── */
+.gallery-caption {
+    background: linear-gradient(transparent, rgba(28,26,22,0.85)) !important;
+}
+
+.gallery-caption h4,
+.gallery-caption p {
+    color: #F5F0E8 !important;
+}
+
+/* ── 视频展示修正 ── */
+.video-item {
+    background: #FDFAF4 !important;
+    border: 1px solid #E8D5A8 !important;
+}
+
+.video-info h4 {
+    color: #4A6340 !important;
+}
+
+.video-info p {
+    color: #6A6058 !important;
+}
+
+/* ── 地图控制按钮修正 ── */
+.map-btn {
+    border-color: #6B8C5A !important;
+    color: #6B8C5A !important;
+}
+
+.map-btn:hover,
+.map-btn.active {
+    background: #6B8C5A !important;
+    color: #FDFAF4 !important;
+    box-shadow: 0 4px 12px rgba(107,140,90,0.3) !important;
+}
+
+/* ── 滚动指示器修正 ── */
+.scroll-indicator {
+    color: #F5F0E8 !important;
+}
+
+/* ── 加载动画文字修正 ── */
+.loader-wrapper div {
+    color: #4A4540 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   墨迹扩散入场动画（滚动触发）
+   ══════════════════════════════════════════════════════════════ */
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── 毛笔横线装饰 ── */
+.section-title-brush {
+    display: block;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #6B8C5A, #C9A96E, transparent);
+    margin: 12px auto 0;
+    animation: brushStroke 1s ease-out 0.3s forwards;
+}
+
+/* ── 老照片效果（图片悬停变彩色） ── */
+.gallery-item img,
+.timeline-image img,
+.timeline-image-item img {
+    filter: grayscale(40%) sepia(15%) !important;
+    transition: filter 0.6s ease !important;
+}
+
+.gallery-item:hover img,
+.timeline-image:hover img,
+.timeline-image-item:hover img {
+    filter: grayscale(0%) sepia(0%) !important;
+}
+
+/* ── 分析section内的白色文字修正 ── */
+.analysis-section .section-title,
+.analysis-section .section-subtitle {
+    color: #1C1A16 !important;
+}
+
+/* ── 体验section内的白色文字修正 ── */
+.experience-section .section-title,
+.experience-section .section-subtitle {
+    color: #1C1A16 !important;
+}
+
+/* ── 内联style白色文字强制覆盖 ── */
+[style*="color: white"],
+[style*="color:white"],
+[style*="color: #fff"],
+[style*="color:#fff"],
+[style*="color: rgba(255,255,255"] {
+    color: #1C1A16 !important;
+}
+
+/* 但保留深色背景容器内的白色文字 */
+[style*="background: rgba(0,0,0"] [style*="color: white"],
+[style*="background: rgba(0,0,0"] [style*="color:white"],
+[style*="background: linear-gradient(135deg, #FF"] [style*="color: white"],
+[style*="background: linear-gradient(135deg, #4F"] [style*="color: white"],
+[style*="background: linear-gradient(135deg, #43"] [style*="color: white"],
+[style*="background: linear-gradient(135deg, #FA"] [style*="color: white"] {
+    color: #FDFAF4 !important;
+}
+
+/* ── 数字孪生监测区域保持深色 ── */
+#model2-canvas-container,
+#twin-3d-container {
+    /* 保持原样 */
+}
+
+/* ── AI浮动按钮修正 ── */
+.ai-float-btn {
+    background: #6B8C5A !important;
+    box-shadow: 0 4px 16px rgba(107,140,90,0.4) !important;
+}
+
+/* ── 滚动条美化 ── */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #EDE6D6;
+}
+::-webkit-scrollbar-thumb {
+    background: #C9A96E;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #6B8C5A;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   石碑铭文字体系统  —  全站字体美化
+   Cinzel（数字/英文）× Noto Serif SC（中文标题）× Noto Sans SC（正文）
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 全局基础 ── */
+html, body {
+    font-family: 'Noto Sans SC', 'Noto Serif SC', sans-serif !important;
+    font-weight: 400 !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+/* ── 所有标题：宋体 + 拓印描边 ── */
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.chart-title,
+.timeline-content h4,
+.structure-card h4,
+.heritage-item h3,
+.village-card h3,
+.video-info h4,
+.analysis-card h3 {
+    font-family: 'Noto Serif SC', serif !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+    text-shadow: none !important;
+}
+
+/* ── 大标题：加描边拓印感 ── */
+h1, h2,
+.section-title {
+    font-weight: 900 !important;
+    letter-spacing: 0.12em !important;
+    -webkit-text-stroke: 0.4px rgba(28, 26, 22, 0.35) !important;
+}
+
+/* ── 正文：细无衬线，舒适阅读 ── */
+p, li, span, div,
+.section-subtitle,
+.stat-desc,
+.timeline-content p,
+.structure-card p,
+.heritage-item p,
+.village-card p,
+.video-info p,
+.gallery-caption p {
+    font-family: 'Noto Sans SC', sans-serif !important;
+    font-weight: 300 !important;
+    line-height: 1.95 !important;
+    letter-spacing: 0.04em !important;
+    color: #2C2820 !important;
+    -webkit-text-fill-color: #2C2820 !important;
+    text-shadow: none !important;
+}
+
+/* ── 数字：Cinzel 罗马柱式，像刻在石头上 ── */
+.stat-number,
+[data-target],
+.analysis-stat-number,
+.stat-card .stat-number {
+    font-family: 'Cinzel', 'Noto Serif SC', serif !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+    font-variant-numeric: lining-nums !important;
+    text-shadow: none !important;
+}
+
+/* ── 导航栏文字：宋体竖排，金色 ── */
+.nav-link,
+.logo span {
+    font-family: 'Noto Serif SC', serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.15em !important;
+    color: #C9A96E !important;
+    -webkit-text-fill-color: #C9A96E !important;
+    -webkit-text-stroke: 0 !important;
+}
+
+/* ── Hero 竖排大标题：最重描边 ── */
+.hero-title-main {
+    font-family: 'Noto Serif SC', serif !important;
+    font-weight: 900 !important;
+    -webkit-text-stroke: 0.8px rgba(28, 26, 22, 0.4) !important;
+    letter-spacing: 0.18em !important;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+}
+
+.hero-title-sub-vert {
+    font-family: 'Noto Serif SC', serif !important;
+    font-weight: 700 !important;
+    -webkit-text-stroke: 0.5px rgba(28, 26, 22, 0.3) !important;
+    letter-spacing: 0.15em !important;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+}
+
+/* ── Hero 数字：Cinzel 大字 ── */
+.hero-stats .stat-number {
+    font-family: 'Cinzel', serif !important;
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em !important;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+}
+
+/* ── Hero 副标题：细宋体 ── */
+.hero-subtitle {
+    font-family: 'Noto Serif SC', serif !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.1em !important;
+    line-height: 2.1 !important;
+    color: #2C2820 !important;
+    -webkit-text-fill-color: #2C2820 !important;
+}
+
+/* ── 页眉标签：Cinzel 英文感 ── */
+.hero-header-tag {
+    font-family: 'Cinzel', 'Noto Serif SC', serif !important;
+    font-weight: 400 !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.25em !important;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+}
+
+.hero-header-year {
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 0.08em !important;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+}
+
+/* ── 探索详情按钮：Cinzel ── */
+.hero-cta {
+    font-family: 'Cinzel', 'Noto Serif SC', serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2em !important;
+    font-size: 0.9rem !important;
+}
+
+/* ── 按钮通用：宋体 ── */
+.btn, button {
+    font-family: 'Noto Serif SC', serif !important;
+    letter-spacing: 0.08em !important;
+}
+
+/* ── 时间轴年份：Cinzel ── */
+.timeline-year {
+    font-family: 'Cinzel', 'Noto Serif SC', serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em !important;
+    color: #6B8C5A !important;
+    -webkit-text-fill-color: #6B8C5A !important;
+}
+
+/* ── 时间轴标题：宋体描边 ── */
+.timeline-content h4 {
+    -webkit-text-stroke: 0.3px rgba(28, 26, 22, 0.25) !important;
+    letter-spacing: 0.1em !important;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+    background: none !important;
+}
+
+/* ── section-title 图标颜色修正 ── */
+.section-title i {
+    color: #6B8C5A !important;
+    -webkit-text-fill-color: #6B8C5A !important;
+    -webkit-text-stroke: 0 !important;
+    margin-right: 0.4em;
+}
+
+/* ── 统计标签：细宋 ── */
+.stat-label {
+    font-family: 'Noto Serif SC', serif !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.12em !important;
+    font-size: 0.78rem !important;
+    color: #4A4540 !important;
+    -webkit-text-fill-color: #4A4540 !important;
+}
+
+/* ── AI欢迎语：细无衬线 ── */
+.ai-welcome {
+    font-family: 'Noto Sans SC', sans-serif !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.06em !important;
+    color: #3A3530 !important;
+    -webkit-text-fill-color: #3A3530 !important;
+}
+
+/* ── 图表标题：宋体 ── */
+.chart-title,
+.chart-wrapper h3,
+.analysis-card h3 {
+    font-family: 'Noto Serif SC', serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+    -webkit-text-stroke: 0.3px rgba(28,26,22,0.2) !important;
+}
+
+/* ── 加载文字 ── */
+.loader-wrapper div {
+    font-family: 'Noto Serif SC', serif !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.15em !important;
+    color: #4A4540 !important;
+    -webkit-text-fill-color: #4A4540 !important;
+}
+
+/* ── 滚动指示器 ── */
+.scroll-indicator span {
+    font-family: 'Noto Sans SC', sans-serif !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.2em !important;
+    font-size: 0.72rem !important;
+    color: #6A6058 !important;
+    -webkit-text-fill-color: #6A6058 !important;
+}
+
+/* ── 村落卡片标题 ── */
+.village-card h3 {
+    font-family: 'Noto Serif SC', serif !important;
+    font-weight: 700 !important;
+    -webkit-text-stroke: 0.3px rgba(28,26,22,0.25) !important;
+    letter-spacing: 0.1em !important;
+    color: #1C1A16 !important;
+    -webkit-text-fill-color: #1C1A16 !important;
+}
+
+/* ── 图片说明：斜体 Cormorant ── */
+.gallery-caption h4 {
+    font-family: 'Noto Serif SC', serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    color: #F5F0E8 !important;
+    -webkit-text-fill-color: #F5F0E8 !important;
+    -webkit-text-stroke: 0 !important;
+}
+
+/* ── 地图控制按钮 ── */
+.map-btn {
+    font-family: 'Noto Serif SC', serif !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.08em !important;
+}
+
+/* ── 深色背景区域内的白色文字保护 ── */
+.experience-section [style*="color: white"],
+.experience-section [style*="color:white"],
+[style*="background: rgba(0,0,0"] p,
+[style*="background: rgba(0,0,0"] h4,
+[style*="background: rgba(0,0,0"] div {
+    font-family: 'Noto Sans SC', sans-serif !important;
+    font-weight: 300 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   墨迹渗透 × 海岸线剪影  —  全站section背景创新
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 通用：每个section相对定位，允许伪元素 ── */
+.experience-section,
+.history-section,
+.structure-section,
+.photo-gallery,
+.video-showcase,
+.analysis-section,
+.heritage-section {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ① 墨迹渗透层  —  ::before 伪元素，滚动进入时扩散
+   ══════════════════════════════════════════════════════════════ */
+
+/* 基础状态：收缩在角落，不可见 */
+.experience-section::before,
+.history-section::before,
+.structure-section::before,
+.photo-gallery::before,
+.video-showcase::before,
+.analysis-section::before,
+.heritage-section::before {
+    content: '' !important;
+    position: absolute !important;
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+    transform: scale(0) !important;
+    opacity: 0 !important;
+    transition: transform 2.4s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 1.2s ease !important;
+}
+
+/* 进入视口后扩散 */
+.experience-section.ink-visible::before,
+.history-section.ink-visible::before,
+.structure-section.ink-visible::before,
+.photo-gallery.ink-visible::before,
+.video-showcase.ink-visible::before,
+.analysis-section.ink-visible::before,
+.heritage-section.ink-visible::before {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+}
+
+/* 沉浸体验：海草绿墨迹，从左上扩散 */
+.experience-section::before {
+    width: 140vw !important;
+    height: 140vw !important;
+    top: -40vw !important;
+    left: -50vw !important;
+    background: radial-gradient(circle,
+        rgba(107, 140, 90, 0.07) 0%,
+        rgba(107, 140, 90, 0.04) 35%,
+        rgba(107, 140, 90, 0.02) 60%,
+        transparent 75%) !important;
+}
+
+/* 历史沿革：暖墨色，从右侧渗入 */
+.history-section::before {
+    width: 160vw !important;
+    height: 160vw !important;
+    top: -30vw !important;
+    right: -70vw !important;
+    left: auto !important;
+    background: radial-gradient(circle,
+        rgba(139, 115, 85, 0.09) 0%,
+        rgba(139, 115, 85, 0.05) 30%,
+        rgba(201, 169, 110, 0.03) 55%,
+        transparent 72%) !important;
+}
+
+/* 结构工艺：深绿墨迹，从底部涌上 */
+.structure-section::before {
+    width: 150vw !important;
+    height: 150vw !important;
+    bottom: -60vw !important;
+    top: auto !important;
+    left: -25vw !important;
+    background: radial-gradient(circle,
+        rgba(74, 99, 64, 0.08) 0%,
+        rgba(107, 140, 90, 0.05) 35%,
+        rgba(107, 140, 90, 0.02) 60%,
+        transparent 75%) !important;
+}
+
+/* 照片展示：沙金色，从中心绽放 */
+.photo-gallery::before {
+    width: 130vw !important;
+    height: 130vw !important;
+    top: -15vw !important;
+    left: -15vw !important;
+    background: radial-gradient(circle,
+        rgba(201, 169, 110, 0.08) 0%,
+        rgba(232, 213, 168, 0.05) 35%,
+        rgba(201, 169, 110, 0.02) 60%,
+        transparent 75%) !important;
+}
+
+/* 视频展示：暖棕，从右下角渗入 */
+.video-showcase::before {
+    width: 140vw !important;
+    height: 140vw !important;
+    bottom: -50vw !important;
+    top: auto !important;
+    right: -50vw !important;
+    left: auto !important;
+    background: radial-gradient(circle,
+        rgba(139, 115, 85, 0.07) 0%,
+        rgba(201, 169, 110, 0.04) 40%,
+        transparent 70%) !important;
+}
+
+/* 分布分析：海洋蓝墨迹，从左下涌上 */
+.analysis-section::before {
+    width: 160vw !important;
+    height: 160vw !important;
+    bottom: -70vw !important;
+    top: auto !important;
+    left: -40vw !important;
+    background: radial-gradient(circle,
+        rgba(44, 95, 126, 0.08) 0%,
+        rgba(44, 95, 126, 0.05) 30%,
+        rgba(74, 143, 168, 0.02) 55%,
+        transparent 72%) !important;
+}
+
+/* 文化传承：金色墨迹，从中心绽放 */
+.heritage-section::before {
+    width: 150vw !important;
+    height: 150vw !important;
+    top: -25vw !important;
+    left: -25vw !important;
+    background: radial-gradient(circle,
+        rgba(201, 169, 110, 0.10) 0%,
+        rgba(201, 169, 110, 0.06) 30%,
+        rgba(232, 213, 168, 0.03) 55%,
+        transparent 72%) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ② 海岸线剪影  —  ::after 伪元素，section底部装饰
+   ══════════════════════════════════════════════════════════════ */
+
+.experience-section::after,
+.history-section::after,
+.structure-section::after,
+.photo-gallery::after,
+.video-showcase::after,
+.analysis-section::after,
+.heritage-section::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    background-repeat: no-repeat !important;
+    background-position: bottom center !important;
+    background-size: 100% auto !important;
+}
+
+/* 历史沿革：远山轮廓线 */
+.history-section::after {
+    height: 120px !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0,90 Q80,60 160,75 Q240,90 320,55 Q400,20 480,45 Q560,70 640,40 Q720,10 800,35 Q880,60 960,45 Q1040,30 1120,55 Q1200,80 1280,65 Q1360,50 1440,70 L1440,120 L0,120 Z' fill='%234A4540' fill-opacity='0.04'/%3E%3Cpath d='M0,100 Q120,80 240,90 Q360,100 480,75 Q600,50 720,65 Q840,80 960,70 Q1080,60 1200,80 Q1320,100 1440,85 L1440,120 L0,120 Z' fill='%234A4540' fill-opacity='0.03'/%3E%3C/svg%3E") !important;
+}
+
+/* 结构工艺：海草房屋顶天际线 */
+.structure-section::after {
+    height: 140px !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 140' preserveAspectRatio='none'%3E%3Cpath d='M0,140 L0,100 L60,100 L60,70 Q90,50 120,70 L120,100 L180,100 L180,65 Q210,42 240,65 L240,100 L300,100 L300,72 Q330,48 360,72 L360,100 L420,100 L420,68 Q450,44 480,68 L480,100 L540,100 L540,75 Q570,52 600,75 L600,100 L660,100 L660,70 Q690,46 720,70 L720,100 L780,100 L780,66 Q810,42 840,66 L840,100 L900,100 L900,72 Q930,50 960,72 L960,100 L1020,100 L1020,68 Q1050,44 1080,68 L1080,100 L1140,100 L1140,74 Q1170,50 1200,74 L1200,100 L1260,100 L1260,70 Q1290,46 1320,70 L1320,100 L1440,100 L1440,140 Z' fill='%236B8C5A' fill-opacity='0.06'/%3E%3C/svg%3E") !important;
+}
+
+/* 照片展示：平缓海浪三层 */
+.photo-gallery::after {
+    height: 100px !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C240,40 480,80 720,55 C960,30 1200,70 1440,50 L1440,100 L0,100 Z' fill='%232C5F7E' fill-opacity='0.05'/%3E%3Cpath d='M0,75 C180,55 360,85 540,68 C720,50 900,78 1080,62 C1260,46 1380,72 1440,65 L1440,100 L0,100 Z' fill='%232C5F7E' fill-opacity='0.04'/%3E%3Cpath d='M0,85 C360,70 720,90 1080,78 C1260,72 1380,82 1440,80 L1440,100 L0,100 Z' fill='%232C5F7E' fill-opacity='0.03'/%3E%3C/svg%3E") !important;
+}
+
+/* 视频展示：芦苇海草植物剪影 */
+.video-showcase::after {
+    height: 130px !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 130' preserveAspectRatio='none'%3E%3Cpath d='M50,130 Q48,90 52,60 Q49,35 53,10' stroke='%236B8C5A' stroke-width='1.5' fill='none' opacity='0.2'/%3E%3Cpath d='M65,130 Q68,85 62,55 Q66,30 63,5' stroke='%238AAD72' stroke-width='1' fill='none' opacity='0.15'/%3E%3Cpath d='M200,130 Q198,95 202,65 Q199,40 203,15' stroke='%236B8C5A' stroke-width='1.5' fill='none' opacity='0.18'/%3E%3Cpath d='M215,130 Q218,90 212,60 Q216,35 213,8' stroke='%238AAD72' stroke-width='1' fill='none' opacity='0.13'/%3E%3Cpath d='M450,130 Q448,88 452,58 Q449,33 453,8' stroke='%236B8C5A' stroke-width='1.5' fill='none' opacity='0.2'/%3E%3Cpath d='M465,130 Q468,92 462,62 Q466,37 463,12' stroke='%238AAD72' stroke-width='1' fill='none' opacity='0.15'/%3E%3Cpath d='M700,130 Q698,90 702,60 Q699,35 703,10' stroke='%236B8C5A' stroke-width='1.5' fill='none' opacity='0.18'/%3E%3Cpath d='M715,130 Q718,85 712,55 Q716,30 713,5' stroke='%238AAD72' stroke-width='1' fill='none' opacity='0.13'/%3E%3Cpath d='M950,130 Q948,92 952,62 Q949,37 953,12' stroke='%236B8C5A' stroke-width='1.5' fill='none' opacity='0.2'/%3E%3Cpath d='M965,130 Q968,88 962,58 Q966,33 963,8' stroke='%238AAD72' stroke-width='1' fill='none' opacity='0.15'/%3E%3Cpath d='M1200,130 Q1198,90 1202,60 Q1199,35 1203,10' stroke='%236B8C5A' stroke-width='1.5' fill='none' opacity='0.18'/%3E%3Cpath d='M1215,130 Q1218,85 1212,55 Q1216,30 1213,5' stroke='%238AAD72' stroke-width='1' fill='none' opacity='0.13'/%3E%3Cpath d='M1380,130 Q1378,92 1382,62 Q1379,37 1383,12' stroke='%236B8C5A' stroke-width='1.5' fill='none' opacity='0.2'/%3E%3C/svg%3E") !important;
+}
+
+/* 分布分析：海浪线 */
+.analysis-section::after {
+    height: 90px !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 90' preserveAspectRatio='none'%3E%3Cpath d='M0,50 C120,30 240,65 360,45 C480,25 600,60 720,42 C840,24 960,58 1080,40 C1200,22 1320,55 1440,38 L1440,90 L0,90 Z' fill='%232C5F7E' fill-opacity='0.05'/%3E%3Cpath d='M0,65 C180,48 360,72 540,58 C720,44 900,68 1080,55 C1260,42 1380,62 1440,55 L1440,90 L0,90 Z' fill='%232C5F7E' fill-opacity='0.04'/%3E%3C/svg%3E") !important;
+}
+
+/* 文化传承：同心圆波纹 */
+.heritage-section::after {
+    height: 110px !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 110' preserveAspectRatio='none'%3E%3Cellipse cx='720' cy='110' rx='800' ry='60' fill='none' stroke='%23C9A96E' stroke-width='0.8' opacity='0.12'/%3E%3Cellipse cx='720' cy='110' rx='600' ry='45' fill='none' stroke='%23C9A96E' stroke-width='0.8' opacity='0.09'/%3E%3Cellipse cx='720' cy='110' rx='400' ry='30' fill='none' stroke='%23C9A96E' stroke-width='0.8' opacity='0.07'/%3E%3Cellipse cx='720' cy='110' rx='200' ry='15' fill='none' stroke='%23C9A96E' stroke-width='0.8' opacity='0.05'/%3E%3C/svg%3E") !important;
+}
+
+/* 沉浸体验：海草茎剪影 */
+.experience-section::after {
+    height: 120px !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M100,120 Q95,85 102,55 Q97,28 104,0' stroke='%236B8C5A' stroke-width='1.5' fill='none' opacity='0.18'/%3E%3Cpath d='M118,120 Q122,80 115,50 Q120,22 116,0' stroke='%238AAD72' stroke-width='1' fill='none' opacity='0.13'/%3E%3Cpath d='M350,120 Q345,88 352,58 Q347,30 354,5' stroke='%236B8C5A' stroke-width='1.5' fill='none' opacity='0.18'/%3E%3Cpath d='M368,120 Q372,82 365,52 Q370,24 366,0' stroke='%238AAD72' stroke-width='1' fill='none' opacity='0.13'/%3E%3Cpath d='M600,120 Q595,85 602,55 Q597,28 604,0' stroke='%236B8C5A' stroke-width='1.5' fill='none' opacity='0.18'/%3E%3Cpath d='M618,120 Q622,80 615,50 Q620,22 616,0' stroke='%238AAD72' stroke-width='1' fill='none' opacity='0.13'/%3E%3Cpath d='M850,120 Q845,88 852,58 Q847,30 854,5' stroke='%236B8C5A' stroke-width='1.5' fill='none' opacity='0.18'/%3E%3Cpath d='M868,120 Q872,82 865,52 Q870,24 866,0' stroke='%238AAD72' stroke-width='1' fill='none' opacity='0.13'/%3E%3Cpath d='M1100,120 Q1095,85 1102,55 Q1097,28 1104,0' stroke='%236B8C5A' stroke-width='1.5' fill='none' opacity='0.18'/%3E%3Cpath d='M1118,120 Q1122,80 1115,50 Q1120,22 1116,0' stroke='%238AAD72' stroke-width='1' fill='none' opacity='0.13'/%3E%3Cpath d='M1350,120 Q1345,88 1352,58 Q1347,30 1354,5' stroke='%236B8C5A' stroke-width='1.5' fill='none' opacity='0.18'/%3E%3C/svg%3E") !important;
+}
+
+/* ── section内容层级高于伪元素 ── */
+.experience-section > *,
+.history-section > *,
+.structure-section > *,
+.photo-gallery > *,
+.video-showcase > *,
+.analysis-section > *,
+.heritage-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   全站固定双侧装饰
+   左：地图坐标刻度    右：石碑海浪纹样
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 左侧轨道 ── */
+.site-left-rail {
+    position: fixed;
+    top: 0;
+    left: 90px; /* 紧贴导航栏右侧 */
+    width: 52px;
+    height: 100vh;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    padding: 20px 0;
+}
+
+/* ── 右侧轨道 ── */
+.site-right-rail {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 52px;
+    height: 100vh;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    padding: 20px 0;
+}
+
+/* ── 罗盘图标 ── */
+.rail-compass {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    margin-bottom: 8px;
+    animation: compassSpin 60s linear infinite;
+}
+
+@keyframes compassSpin {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ── 印章 ── */
+.rail-seal {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    margin-bottom: 8px;
+}
+
+/* ── 竖线 ── */
+.rail-line-left,
+.rail-line-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(201,169,110,0.25) 8%,
+        rgba(201,169,110,0.25) 92%,
+        transparent 100%
+    );
+}
+
+.rail-line-left  { right: 12px; }
+.rail-line-right { left: 12px; }
+
+/* ── 左侧刻度容器 ── */
+.rail-ticks {
+    flex: 1;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 16px;
+    gap: 0;
+    overflow: hidden;
+}
+
+/* ── 刻度项（JS生成） ── */
+.rail-tick {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    height: 80px;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.rail-tick-line {
+    width: 8px;
+    height: 1px;
+    background: rgba(201,169,110,0.35);
+    flex-shrink: 0;
+}
+
+.rail-tick-line.major {
+    width: 14px;
+    background: rgba(201,169,110,0.55);
+}
+
+.rail-tick-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    color: rgba(201,169,110,0.55);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    writing-mode: horizontal-tb;
+    line-height: 1;
+    transition: color 0.4s ease, opacity 0.4s ease;
+}
+
+.rail-tick-num.active {
+    color: rgba(201,169,110,0.9);
+    font-weight: 600;
+}
+
+/* ── 底部标签 ── */
+.rail-bottom-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    color: rgba(201,169,110,0.5);
+    letter-spacing: 0.1em;
+    margin-top: 8px;
+    writing-mode: horizontal-tb;
+}
+
+/* ── 右侧海浪纹样SVG ── */
+.rail-wave-pattern {
+    flex: 1;
+    width: 28px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* ── 右侧竖排英文 ── */
+.rail-vert-text {
+    position: absolute;
+    top: 80px;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.55rem;
+    color: rgba(201,169,110,0.28);
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    pointer-events: none;
+}
+
+/* ── 响应式：小屏隐藏 ── */
+@media (max-width: 1100px) {
+    .site-left-rail,
+    .site-right-rail {
+        display: none;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   三合一升级：海草生长 + 潮汐水位计 + 古海图经纬网
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── ① 古海图经纬网 ── */
+.sea-chart-grid {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 119px,
+            rgba(201,169,110,0.045) 119px,
+            rgba(201,169,110,0.045) 120px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 119px,
+            rgba(201,169,110,0.045) 119px,
+            rgba(201,169,110,0.045) 120px
+        );
+    background-size: 120px 120px;
+    background-position: 90px 0;
+}
+
+/* 网格交叉点光晕 */
+.sea-chart-grid::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+        circle 2px at center,
+        rgba(201,169,110,0.12) 0%,
+        transparent 100%
+    );
+    background-size: 120px 120px;
+    background-position: 90px 0;
+}
+
+/* ── ② 海草生长SVG ── */
+.seaweed-grow-svg {
+    flex: 1;
+    width: 28px;
+    min-height: 0;
+    overflow: visible;
+}
+
+/* ── ③ 潮汐水位计 ── */
+.tidal-gauge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    min-height: 0;
+    padding: 4px 0;
+}
+
+.tidal-gauge-label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.48rem;
+    color: rgba(201,169,110,0.55);
+    letter-spacing: 0.1em;
+    writing-mode: horizontal-tb;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.tidal-gauge-tube {
+    flex: 1;
+    width: 18px;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.tidal-tube-frame {
+    flex: 1;
+    border: 1px solid rgba(201,169,110,0.3);
+    border-radius: 9px;
+    position: relative;
+    overflow: hidden;
+    background: rgba(245,240,232,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* 刻度 */
+.tidal-scale {
+    position: absolute;
+    left: -22px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2px 0;
+}
+
+.tidal-scale span {
+    font-family: 'Cinzel', serif;
+    font-size: 0.38rem;
+    color: rgba(201,169,110,0.45);
+    white-space: nowrap;
+    line-height: 1;
+}
+
+/* 水体 */
+.tidal-water {
+    width: 100%;
+    height: 58%; /* 初始58%，对应当前濒危指数 */
+    background: linear-gradient(
+        to top,
+        rgba(44,95,126,0.35) 0%,
+        rgba(74,143,168,0.25) 60%,
+        rgba(107,140,90,0.15) 100%
+    );
+    border-radius: 0 0 8px 8px;
+    position: relative;
+    transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* 水面波动 */
+.tidal-wave-surface {
+    width: 200%;
+    height: 6px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    position: absolute;
+    top: -3px;
+    left: -50%;
+    animation: waterSurface 3s ease-in-out infinite;
+}
+
+@keyframes waterSurface {
+    0%,100% { transform: translateX(0) scaleY(1); }
+    50%      { transform: translateX(10%) scaleY(1.3); }
+}
+
+/* 当前数值 */
+.tidal-current-val {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: rgba(201,169,110,0.8);
+    letter-spacing: 0.05em;
+    text-align: center;
+    line-height: 1;
+    transition: color 0.5s ease;
+}
+
+.tidal-current-desc {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.42rem;
+    color: rgba(201,169,110,0.55);
+    text-align: center;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+/* 水位颜色随危险程度变化 */
+.tidal-water.danger-high {
+    background: linear-gradient(
+        to top,
+        rgba(196,97,74,0.4) 0%,
+        rgba(196,97,74,0.25) 60%,
+        rgba(201,169,110,0.15) 100%
+    ) !important;
+}
+
+.tidal-water.danger-low {
+    background: linear-gradient(
+        to top,
+        rgba(107,140,90,0.4) 0%,
+        rgba(107,140,90,0.25) 60%,
+        rgba(138,173,114,0.15) 100%
+    ) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   概览创新：晨光扫描 + 海平线呼吸
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 晨光扫描层 ── */
+.hero-morning-light {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.hero-morning-light::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -15%;
+    width: 8%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent        0%,
+        rgba(255,248,220,0.00) 20%,
+        rgba(255,248,220,0.07) 45%,
+        rgba(255,252,235,0.10) 50%,
+        rgba(255,248,220,0.07) 55%,
+        rgba(255,248,220,0.00) 80%,
+        transparent        100%
+    );
+    transform: skewX(-8deg);
+    animation: morningLightSweep 14s ease-in-out infinite;
+    mix-blend-mode: overlay;
+}
+
+/* 第二道光，稍细稍慢，错开时间 */
+.hero-morning-light::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -15%;
+    width: 4%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent        0%,
+        rgba(255,248,220,0.00) 25%,
+        rgba(255,252,235,0.06) 50%,
+        rgba(255,248,220,0.00) 75%,
+        transparent        100%
+    );
+    transform: skewX(-8deg);
+    animation: morningLightSweep 14s ease-in-out 3s infinite;
+    mix-blend-mode: overlay;
+}
+
+@keyframes morningLightSweep {
+    0%   { left: -15%; opacity: 0; }
+    5%   { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { left: 115%; opacity: 0; }
+}
+
+/* ── 海平线呼吸层 ── */
+.hero-horizon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.hero-horizon-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* 海水填充 */
+.horizon-fill {
+    fill: rgba(44, 95, 126, 0.12);
+    animation: horizonBreathe 9s ease-in-out infinite;
+}
+
+/* 主波浪线 */
+.horizon-line-main {
+    fill: none;
+    stroke: rgba(107, 140, 90, 0.55);
+    stroke-width: 2.2;
+    filter: drop-shadow(0 0 4px rgba(107,140,90,0.4));
+    animation: horizonBreathe 9s ease-in-out infinite;
+}
+
+/* 次波浪线 */
+.horizon-line-sub {
+    fill: none;
+    stroke: rgba(107, 140, 90, 0.30);
+    stroke-width: 1.4;
+    animation: horizonBreathe 11s ease-in-out 1.5s infinite;
+}
+
+/* 远山轮廓 */
+.horizon-mountain {
+    fill: none;
+    stroke: rgba(74, 69, 64, 0.18);
+    stroke-width: 1.0;
+    animation: horizonBreathe 15s ease-in-out 3s infinite;
+}
+
+/* 波浪呼吸动画：幅度加大 */
+@keyframes horizonBreathe {
+    0%   { transform: translateY(0px)   translateX(0px);   }
+    20%  { transform: translateY(-12px) translateX(8px);   }
+    45%  { transform: translateY(-20px) translateX(-6px);  }
+    65%  { transform: translateY(-8px)  translateX(10px);  }
+    80%  { transform: translateY(-15px) translateX(-3px);  }
+    100% { transform: translateY(0px)   translateX(0px);   }
+}
+
+/* 确保scroll-indicator在海平线之上 */
+.scroll-indicator {
+    z-index: 6 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   概览增强：右侧实景照片 + 濒危脉冲心跳线
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 右侧实景照片面板 ── */
+.hero-photo-panel {
+    position: absolute;
+    top: 0;
+    right: 60px;          /* 留出右侧装饰轨道的空间 */
+    width: 32%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: auto;
+    overflow: hidden;
+}
+
+/* 照片本体：黑白处理，边缘渐变消失 */
+.hero-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: grayscale(100%) sepia(20%) brightness(0.85) contrast(1.05);
+    transition: filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+}
+
+/* 悬停变彩色 */
+.hero-photo-panel:hover .hero-photo-img {
+    filter: grayscale(0%) sepia(8%) brightness(0.9) contrast(1.05);
+}
+
+/* 左侧渐变遮罩：照片和纸质背景自然融合 */
+.hero-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        #F5F0E8 0%,
+        rgba(245,240,232,0.7) 12%,
+        rgba(245,240,232,0.15) 30%,
+        transparent 55%,
+        transparent 75%,
+        rgba(245,240,232,0.3) 90%,
+        rgba(245,240,232,0.6) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.8s ease;
+}
+
+/* 悬停时遮罩变淡，让照片更清晰 */
+.hero-photo-panel:hover .hero-photo-overlay {
+    opacity: 0.6;
+}
+
+/* 照片说明文字 */
+.hero-photo-caption {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.hero-photo-panel:hover .hero-photo-caption {
+    opacity: 1;
+}
+
+.hero-photo-location {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.9);
+    letter-spacing: 0.2em;
+    text-shadow: 0 1px 4px rgba(28,26,22,0.6);
+    background: rgba(28,26,22,0.3);
+    padding: 4px 12px;
+    border-radius: 1px;
+}
+
+.hero-photo-year {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    color: rgba(201,169,110,0.95);
+    letter-spacing: 0.15em;
+    text-shadow: 0 1px 4px rgba(28,26,22,0.6);
+}
+
+/* ── 濒危脉冲心跳线 ── */
+.hero-ecg-wrap {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.18;
+}
+
+.hero-ecg-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.ecg-line {
+    fill: none;
+    stroke: #6B8C5A;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: ecgDraw 6s ease-out 0.5s forwards,
+               ecgPulse 4s ease-in-out 6.5s infinite;
+}
+
+/* 心跳线从左到右绘制 */
+@keyframes ecgDraw {
+    0%   { stroke-dashoffset: 2000; opacity: 0.5; }
+    100% { stroke-dashoffset: 0;    opacity: 1;   }
+}
+
+/* 绘制完后持续脉冲 */
+@keyframes ecgPulse {
+    0%,100% { opacity: 1;   stroke-width: 1.2; }
+    50%     { opacity: 0.6; stroke-width: 0.8; }
+}
+
+/* 峰值标注文字 */
+.ecg-label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 7px;
+    fill: rgba(107,140,90,0.7);
+    letter-spacing: 0.05em;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   写字海草茎  —  阶段②核心视觉
+   ══════════════════════════════════════════════════════════════ */
+.hero-writer-stem {
+    position: absolute;
+    left: -30px;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+    overflow: visible;
+    opacity: 0;
+    animation: writerStemAppear 0.3s ease-out 0.4s forwards;
+}
+
+@keyframes writerStemAppear {
+    to { opacity: 1; }
+}
+
+/* hero-left 需要相对定位以容纳绝对定位的茎 */
+.hero-left {
+    position: relative;
+}
+
+/* ── stat-item 需要相对定位 ── */
+.stat-item { position: relative !important; overflow: hidden !important; }
